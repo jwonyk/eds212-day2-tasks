@@ -5,7 +5,7 @@ format: html
 editor: visual
 ---
 
-## 
+## Part 1
 
 ```{r}
 # install.packages("palmerpenguins")
@@ -27,5 +27,41 @@ dp_da
 a <- 1.2
 eval(dp_da)
 
+
+```
+
+## Part 2
+
+```{r}
+
+# install.packages("palmerpenguins")
+# install.packages("packagename")
+
+library(tidyverse)
+library(palmerpenguins)
+
+ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(aes(color = species)) +
+  scale_color_manual(values = c("darkorange","purple","cyan4")) +
+  labs(x = "Bill Length (mm)",
+       y = "Bill Depth (mm)",
+       title = "Penguin Bill Length vs. Depth by Species",
+       subtitle = "Palmer Archipelago, Antarctice (2007 - 2009)",
+       caption = "Collected by Dr. Kristen Gorman and colleagues at Palmer Station LTER") +
+  facet_wrap(~species) +
+  theme_minimal()
+```
+
+```{r}
+ggplot(data = penguins, aes(x = species, y = flipper_length_mm)) +
+  geom_jitter(width = 0.2, height = 0) +
+  scale_color_manual(values = c("darkorange","purple","cyan4")) +
+  labs(x = "Species",
+       y = "Flipper Length (mm)",
+       title = "Flipper Length by Penguin Species",
+       subtitle = "Palmer Archipelago, Antarctice (2007 - 2009)",
+       caption = "Collected by Dr. Kristen Gorman and colleagues at Palmer Station LTER") +
+  # facet_wrap(~island) +
+  theme_minimal()
 
 ```
